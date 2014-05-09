@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/item1" android:title="Beers" >
+        <menu>
+            <item android:id="@+id/Heineken" android:title="Heineken"/>
+            <item android:id="@+id/FeldSchlossen" android:title="Feldschlossen"/>
+            <item android:id="@+id/Corona" android:title="Corona"/>
+            <item android:id="@+id/Cardinal" android:title="Cardinal"/>
+        </menu>
+    </item>
+    <item android:id="@+id/item2" android:title="Soft Drink">
+        <menu>
+            <item android:id="@+id/Coca_Cola" android:title="Coca Cola"/>
+            <item android:id="@+id/Fanta" android:title="Fanta"/>
+            <item android:id="@+id/Water" android:title="Water"/>
+            <item android:id="@+id/Dr_Pepper" android:title="Dr. Pepper"/>
+        </menu>
+    </item>
+    <item android:id="@+id/item3" android:title="Cocktails">
+         <menu>
+            <item android:id="@+id/SOTB" android:title="Sex On The Beach"/>
+            <item android:id="@+id/Mojito" android:title="Mojito"/>
+            <item android:id="@+id/VRB" android:title="Vodka Red Bull"/>
+            <item android:id="@+id/JaegerBomb" android:title="JaegerBomb"/>
+        </menu>
+    </item>
+    <item android:id="@+id/Done" android:title="Done"></item>
+    
+
+</menu>

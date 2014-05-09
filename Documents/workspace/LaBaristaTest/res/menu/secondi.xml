@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/item1" android:title="Pizza">
+        <menu>
+            <item android:id="@+id/Margherita" android:title="Margherita"/>
+            <item android:id="@+id/Marinara" android:title="Marinara"/>
+            <item android:id="@+id/Prosciutto_Funghi" android:title="Prosciutto Funghi"/>
+            <item android:id="@+id/Quattro_Formaggi" android:title="Quattro Formaggi"/>
+            <item android:id="@+id/Bianca" android:title="Bianca"/>
+            <item android:id="@+id/Calzone" android:title="Calzone"/>
+            <item android:id="@+id/Prosciutto" android:title="Prosciutto"/>
+            
+        </menu>
+    </item>
+    <item android:id="@+id/item2" android:title="Meat"><menu>
+        <item android:id="@+id/Filet" android:title="Filet"/>
+            <item android:id="@+id/EntreCote" android:title="EntreCote"/>
+            <item android:id="@+id/Steak" android:title="Steak"/>
+            <item android:id="@+id/Cordon_Bleu" android:title="Cordon Bleu"/>
+            <item android:id="@+id/Horse" android:title="Horse"/>
+    </menu>
+        
+    </item>
+    <item android:id="@+id/item3" android:title="Fish"><menu>
+         <item android:id="@+id/Shrimps_Curry" android:title="Shrimps Curry"/>
+            <item android:id="@+id/Royal_Shrimps" android:title="Royal Shrimps"/>
+            <item android:id="@+id/Giant_Shrimps" android:title="Giant Shrimps"/>
+            <item android:id="@+id/Huge_Shrimps" android:title="Huge Shrimps"/>
+            <item android:id="@+id/Titan_Shrimps" android:title="Titan Shrimps"/>
+    </menu>
+        
+    </item>
+    <item android:id="@+id/Done" android:title="Done"></item>
+
+    
+
+</menu>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/item2" android:title="Soups">
+        <menu> 
+            <item android:id="@+id/Consomme" android:title="Consomme"/>
+            <item android:id="@+id/Minestrone" android:title="Minestrone"/>
+            <item android:id="@+id/Onions" android:title="Onions"/>
+            <item android:id="@+id/Pumpkin" android:title="Pumpkin"/>
+        </menu>
+    </item>
+    <item android:id="@+id/item3" android:title="Cold Cut">
+        <menu>  
+            <item android:id="@+id/Mix" android:title="Mix"/>
+            <item android:id="@+id/Ham" android:title="Ham"/>
+            <item android:id="@+id/Salami" android:title="Salami"/>
+            <item android:id="@+id/Cheese" android:title="Cheese"/>
+        </menu>
+    </item>
+    <item android:id="@+id/item4" android:title="Random">
+        <menu>  
+            <item android:id="@+id/Escargots" android:title="Escargots"/>
+            <item android:id="@+id/Bruschetta" android:title="Bruschetta"/>
+            <item android:id="@+id/Shrimps_Cocktail" android:title="Shrimps Cocktail"/>
+       </menu>
+    </item>
+    <item android:id="@+id/Done" android:title="Done"></item>
+
+</menu>
