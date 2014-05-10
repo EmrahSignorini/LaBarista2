@@ -151,28 +151,20 @@ public class Parse1 {
 
 		 return d;
 	}
-public void SetBool(final String cl,final String columnFind, final String valueFind,final String columnToGet,final boolean value,final MainActivity main,final WaitActivity wait){
+public void SetBool(final String cl,final String columnFind, final String valueFind,final String columnToGet,final boolean value,final MainActivity main){
 	ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
 	query.whereEqualTo(columnFind, valueFind);
 	query.findInBackground(new FindCallback<ParseObject>() {
 		   public void done(List<ParseObject> objects, ParseException e) {
 		     if (e == null) {
-		    	 if (main == null){
-		    		 for(int i =0;i<objects.size();i++){
-		    			 if (objects.get(i).getBoolean(columnToGet) == value){
-		    				 	ParseObject point = ParseObject.createWithoutData(cl, objects.get(i).getObjectId());
-		    				 	point.put("Taken", !value);
-		    				 	point.saveInBackground();
-		    				 	}
-		    			 }
-		    		 wait.Back2();
-		    		 }
-		    	 	
-		    	 	else {
+
 			    		 for(int i =0;i<objects.size();i++){
 			    			 if (objects.get(i).getBoolean(columnToGet) == value){
+			    				 	ParseObject point = ParseObject.createWithoutData(cl, objects.get(i).getObjectId());
+			    				 	point.put("Taken", !value);
+			    				 	point.saveInBackground();
 			    				 
-			    				 main.empty(valueFind);
+			    				 	main.empty(valueFind);
 
 			    			 }
 			    				 	
@@ -181,7 +173,7 @@ public void SetBool(final String cl,final String columnFind, final String valueF
 			    			 	main.OccupiedTable(valueFind);
 			    			 	}
 			    		 }
-		    	 	}
+		    	 	
 		    	 }
 		       
 		      else {
@@ -273,8 +265,81 @@ public void toInt(final String cl, final String column, final String value, fina
                     }  
                 } else {}
             }
-        }); 
+        });
+      
+     
         
     }
+    public void getOrderDesserts(final String cl, final String columnFind, final String valueFind, final String columnToGet, final WaitActivity wait){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
+        query.whereEqualTo(columnFind, valueFind);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for(int i =0;i<objects.size();i++){
+                        list = objects.get(i).getString(columnToGet);
+                    }
+                    wait.setDessert(list);
+                } else {}
+            }
+        });
+    }
+    public void getOrderDrinks(final String cl, final String columnFind, final String valueFind, final String columnToGet, final WaitActivity wait){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
+        query.whereEqualTo(columnFind, valueFind);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for(int i =0;i<objects.size();i++){
+                        list = objects.get(i).getString(columnToGet);
+                    }
+                    wait.setDrinks(list);
+                } else {}
+            }
+        });
+    }
+    public void getOrderAppetizers(final String cl, final String columnFind, final String valueFind, final String columnToGet, final WaitActivity wait){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
+        query.whereEqualTo(columnFind, valueFind);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for(int i =0;i<objects.size();i++){
+                        list = objects.get(i).getString(columnToGet);
+                    }
+                    wait.setAppetizers(list);
+                } else {}
+            }
+        });
+    }
+    public void getOrderFirsts(final String cl, final String columnFind, final String valueFind, final String columnToGet, final WaitActivity wait){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
+        query.whereEqualTo(columnFind, valueFind);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for(int i =0;i<objects.size();i++){
+                        list = objects.get(i).getString(columnToGet);
+                    }
+                    wait.setFirsts(list);
+                } else {}
+            }
+        });
+    }
+    public void getOrderSeconds(final String cl, final String columnFind, final String valueFind, final String columnToGet, final WaitActivity wait){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
+        query.whereEqualTo(columnFind, valueFind);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for(int i =0;i<objects.size();i++){
+                        list = objects.get(i).getString(columnToGet);
+                    }
+                    wait.setSeconds(list);
+                } else {}
+            }
+        });
+    }
+    
 
 }

@@ -45,10 +45,14 @@ public class WaitActivity extends Activity {
 			tavolo1 = new ArrayList<String>(getIntent().getStringArrayListExtra("Order"));
 			card = (ListView)findViewById(R.id.listView1);
 			card.setAdapter(asd(tavolo1.toArray(new String[tavolo1.size()])));
+			Test.getOrderDesserts("Orders", "Table", getIntent().getExtras().getString("Table"), "Desserts", this);
+			Test.getOrderDrinks("Orders", "Table", getIntent().getExtras().getString("Table"), "Drinks", this);
+			Test.getOrderAppetizers("Orders", "Table", getIntent().getExtras().getString("Table"), "Appetizers", this);
+			Test.getOrderSeconds("Orders", "Table",getIntent().getExtras().getString("Table"), "Seconds", this);
+			Test.getOrderFirsts("Orders", "Table",getIntent().getExtras().getString("Table"), "Firsts", this);
 		}
 		else{
 			tavolo1 = new ArrayList<String>();
-			tavolo1.add("Test");
 			card = (ListView)findViewById(R.id.listView1);
 			card.setAdapter(asd(tavolo1.toArray(new String[tavolo1.size()])));
 		}
@@ -604,12 +608,12 @@ public class WaitActivity extends Activity {
 	public void Back(){
 		Test.findSaveString("Orders","Table",getIntent().getExtras().getString("Table"),"Drinks",Drinks, "Appetizers",Appetizers,"Firsts",Firsts,"Seconds",Seconds,"Desserts",Desserts);
 		Test.findSaveString1("Orders","Table",getIntent().getExtras().getString("Table"),"Total",String.valueOf(Total));
-		Test.SetBool("Tables", "Table", getIntent().getExtras().getString("Table"), "Taken", false,null,this);
-	}
-	public void Back2(){
 		Intent Main = new Intent(this,MainActivity.class);
 		startActivity(Main);
+		
 	}
+
+	
 	private void Test(ListView Test){
 		Test.setOnItemClickListener(
 		        new OnItemClickListener()
@@ -638,16 +642,10 @@ public class WaitActivity extends Activity {
 		        								if(element.equals(tavolo1.get(pos))){
 		        									test1.remove(tavolo1.get(pos));
 		        								}
-	        									
-	        								
-	        								
 		        							}
-		        							
 		        							Desserts = "";
 		        							for(String element :test1){
 		        									Desserts = Desserts + element + "-";
-		        								
-		        								
 		        							}
 		        						}
 		        						else if(key.equals("Appetizers")){
@@ -658,16 +656,10 @@ public class WaitActivity extends Activity {
 		        								if(element.equals(tavolo1.get(pos))){
 		        									test1.remove(tavolo1.get(pos));
 		        								}
-	        									
-	        								
-	        								
 		        							}
-		        							
 		        							Appetizers = "";
 		        							for(String element : test1){
 		        									Appetizers = Appetizers + element + "-";
-		        								
-		        								
 		        							}
 		        						}
 		        						else if(key.equals("Firsts")){
@@ -678,16 +670,10 @@ public class WaitActivity extends Activity {
 		        								if(element.equals(tavolo1.get(pos))){
 		        									test1.remove(tavolo1.get(pos));
 		        								}
-	        									
-	        								
-	        								
 		        							}
-		        							
 		        							Firsts = "";
 		        							for(String element :test1){
 		        									Firsts = Firsts + element + "-";
-		        								
-		        								
 		        							}
 		        						}
 		        						else if(key.equals("Seconds")){
@@ -712,16 +698,11 @@ public class WaitActivity extends Activity {
 		        								if(element.equals(tavolo1.get(pos))){
 		        									test1.remove(tavolo1.get(pos));
 		        								}
-	        									
-	        								
-	        								
 		        							}
 		        							
 		        							Drinks = "";
 		        							for(String element :test1){
 		        									Drinks = Drinks + element + "-";
-		        								
-		        								
 		        							}
 		        						}
 		        						
@@ -739,9 +720,43 @@ public class WaitActivity extends Activity {
 		);
 	}
 
-	
-	
+	public void setDessert(String test){
+		String[] def = test.split("-");
+		for(int i=0;i<def.length-1;i++){
+			Desserts = Desserts + def[i] + "-" ;
+			
+		}
 
+		
+	}
+	public void setAppetizers(String test){
+		String[] def = test.split("-");
+		for(int i=0;i<def.length-1;i++){
+			Appetizers = Appetizers + def[i] + "-" ;
+				
+			}
+	}
+	public void setFirsts(String test){
+		String[] def = test.split("-");
+		for(int i=0;i<def.length-1;i++){
+			Firsts = Firsts + def[i] + "-" ;
+				
+			}
+	}
+	public void setSeconds(String test){
+		String[] def = test.split("-");
+		for(int i=0;i<def.length-1;i++){
+			Seconds = Seconds + def[i] + "-" ;
+				
+			}
+	}
+	public void setDrinks(String test){
+		String[] def = test.split("-");
+		for(int i=0;i<def.length-1;i++){
+			Drinks = Drinks + def[i] + "-" ;
+				
+			}
+	}
 	
 
 

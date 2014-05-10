@@ -18,7 +18,6 @@ public class OccTable extends Activity {
 	private int index = 0;
 	private String[] items = {};
 	private ArrayList<String> array = new ArrayList<String>();
-	private boolean setter = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,7 +61,7 @@ public class OccTable extends Activity {
 		for (int i=0; i<arr.length-1;i++){
 			array.add(arr[i]);
 		}
-		setter = true;
+
 		ListView listView1 = (ListView) findViewById(R.id.listView1);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, array.toArray(new String[array.size()]));
 		listView1.setAdapter(adapter);
@@ -72,6 +71,7 @@ public class OccTable extends Activity {
 
 	public void changeOrder(View view){
 		Intent next = new Intent(OccTable.this, WaitActivity.class);
+		next.putExtra("Table", getIntent().getExtras().getString("Table"));
 		next.putStringArrayListExtra("Order", array);
 		startActivity(next);
 		

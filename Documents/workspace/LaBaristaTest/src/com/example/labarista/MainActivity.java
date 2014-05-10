@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 		final String table = view.getContentDescription().toString();
 		//view.setBackgroundColor(Color.parseColor(redColor));
 		Parse1 isTableOccupied = new Parse1();
-		isTableOccupied.SetBool("Tables", "Table", table, "Taken", false,this,null);
+		isTableOccupied.SetBool("Tables", "Table", table, "Taken", false,this);
 
 	}
 	public void OccupiedTable(String table){
