@@ -14,9 +14,6 @@ import com.parse.Parse;
 
 public class OccTable extends Activity {
 	private String table;
-	private String yolo ="";
-	private int index = 0;
-	private String[] items = {};
 	private ArrayList<String> array = new ArrayList<String>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +24,7 @@ public class OccTable extends Activity {
 		table = wela;
 		Parse.initialize(this, "21Kt4Bfjgl2Xxfa3nqm4LY74Etj1BVqI73mQCflt", "eEyWeokMchKUtVrEn6htK7V08ujFH67yGRCH1WBh");
 		getList();
+		
         
 		}
 	public void checkout(View view){

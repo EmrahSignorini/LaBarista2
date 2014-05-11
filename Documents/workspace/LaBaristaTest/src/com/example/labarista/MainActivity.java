@@ -1,7 +1,5 @@
 package com.example.labarista;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +12,6 @@ import android.widget.Toast;
 import com.parse.Parse;
 
 public class MainActivity extends Activity {
-	private ArrayList<String> test = new ArrayList<String>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,9 +49,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void empty(String table){
-
 		Intent next = new Intent(this, WaitActivity.class);
-		next.putStringArrayListExtra("TestA", test);
 		next.putExtra("Table", table);
 		startActivity(next);
 	}
