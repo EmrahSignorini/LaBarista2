@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageButton
+        android1:id="@+id/imageButton4"
+        android1:layout_width="40dp"
+        android1:layout_height="40dp"
+        android1:layout_margin="10dp"
+        android1:layout_toRightOf="@+id/imageButton3"
+        android1:background="@android:color/transparent"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/seconds"
+        android1:onClick="ordine4"
+         />
+
+    <ImageButton
+        android1:id="@+id/imageButton1"
+        android1:layout_width="40dp"
+        android1:layout_height="40dp"
+        android1:layout_alignParentLeft="true"
+        android1:layout_alignParentTop="true"
+        android1:layout_margin="10dp"
+        android1:background="@android:color/transparent"
+        android1:focusableInTouchMode="true"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/glass" 
+        android1:onClick="ordine3"/>
+
+    <ImageButton
+        android1:id="@+id/imageButton3"
+        android1:layout_width="40dp"
+        android1:layout_height="40dp"
+        android1:layout_margin="10dp"
+        android1:layout_toRightOf="@+id/imageButton2"
+        android1:background="@android:color/transparent"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/firsts"
+        android1:onClick="ordine2" />
+
+    <ImageButton
+        android1:id="@+id/imageButton2"
+        android1:layout_width="40dp"
+        android1:layout_height="40dp"
+        android1:layout_alignParentTop="true"
+        android1:layout_margin="10dp"
+        android1:layout_toRightOf="@+id/imageButton1"
+        android1:background="@android:color/transparent"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/tapa"
+        android1:onClick="ordine1" />
+
+    <ImageButton
+        android1:id="@+id/imageButton5"
+        android1:layout_width="40dp"
+        android1:layout_height="40dp"
+        android1:layout_margin="10dp"
+        android1:layout_toRightOf="@+id/imageButton4"
+        android1:layout_alignParentTop="true"
+        android1:background="@drawable/rounded"
+        android1:onClick="ordine"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/dessert" />
+
+    <ListView
+        android1:id="@+id/listView1"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentLeft="true"
+        android1:layout_below="@+id/imageButton3"
+ >
+    </ListView>
+
+</RelativeLayout>

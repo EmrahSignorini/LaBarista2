@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/torta" android:title="Torta Della Nonna" ></item>
+    <item android:id="@+id/panna" android:title="Panna Cotta"></item>
+    <item android:id="@+id/mer" android:title="Meringues"></item>
+    <item android:id="@+id/icec" android:title="Ice Cream"></item>
+    <item android:id="@+id/cres" android:title="Crepes Susettes"></item>
+    <item android:id="@+id/Done" android:title="Done"></item>   
+</menu>
