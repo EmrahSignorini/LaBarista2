@@ -340,6 +340,20 @@ public void toInt(final String cl, final String column, final String value, fina
             }
         });
     }
+    public void getTotal(final String cl, final String columnFind, final String valueFind, final String columnToGet, final WaitActivity wait){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
+        query.whereEqualTo(columnFind, valueFind);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for(int i =0;i<objects.size();i++){
+                        list = objects.get(i).getString(columnToGet);
+                    }
+                    wait.setTotal(list);
+                } else {}
+            }
+        });
+    }
     
 
 }

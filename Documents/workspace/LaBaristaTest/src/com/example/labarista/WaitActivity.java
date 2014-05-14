@@ -50,6 +50,7 @@ public class WaitActivity extends Activity {
 			Test.getOrderAppetizers("Orders", "Table", getIntent().getExtras().getString("Table"), "Appetizers", this);
 			Test.getOrderSeconds("Orders", "Table",getIntent().getExtras().getString("Table"), "Seconds", this);
 			Test.getOrderFirsts("Orders", "Table",getIntent().getExtras().getString("Table"), "Firsts", this);
+			Test.getTotal("Orders", "Table", getIntent().getExtras().getString("Table"), "Total", this);
 		}
 		else{
 			tavolo1 = new ArrayList<String>();
@@ -608,7 +609,9 @@ public class WaitActivity extends Activity {
 	public void Back(){
 		Test.findSaveString("Orders","Table",getIntent().getExtras().getString("Table"),"Drinks",Drinks, "Appetizers",Appetizers,"Firsts",Firsts,"Seconds",Seconds,"Desserts",Desserts);
 		Test.findSaveString1("Orders","Table",getIntent().getExtras().getString("Table"),"Total",String.valueOf(Total));
-		Intent Main = new Intent(this,MainActivity.class);
+		Intent Main = new Intent(this, OccTable.class);
+		Main.putExtra("Table", getIntent().getExtras().getString("Table"));
+		Main.putStringArrayListExtra("Order", tavolo1);
 		startActivity(Main);
 		
 	}
@@ -618,7 +621,6 @@ public class WaitActivity extends Activity {
 		Test.setOnItemClickListener(
 		        new OnItemClickListener()
 		        {
-
 		            @Override
 		            public void onItemClick(AdapterView<?> arg0, View view,
 		                    int position, long id) {
@@ -635,24 +637,33 @@ public class WaitActivity extends Activity {
 		        				case R.id.command:
 		        					for(String key: test.keySet()){
 		        						if(key.equals("Desserts")){
-		        							getValueDesserts(tavolo1.get(pos),false);
-		        							String[] test = Desserts.split("-");
-		        							ArrayList<String> test1 = new ArrayList<String>(Arrays.asList(test));
-		        							for(String element :test1){
-		        								if(element.equals(tavolo1.get(pos))){
-		        									test1.remove(tavolo1.get(pos));
+		        							if(Desserts.equals("")){
+		        								Desserts = "";
+		        							}
+		        							else{
+		        								getValueDesserts(tavolo1.get(pos),false);
+		        								String[] test = Desserts.split("-");
+		        								ArrayList<String> test1 = new ArrayList<String>(Arrays.asList(test));
+		        								for(String element :Arrays.asList(Desserts.split("-"))){
+		        									if(element.equals(tavolo1.get(pos))){
+		        										test1.remove(tavolo1.get(pos));
 		        								}
 		        							}
-		        							Desserts = "";
-		        							for(String element :test1){
+		        								Desserts = "";
+		        								for(String element :test1){
 		        									Desserts = Desserts + element + "-";
+		        								}
 		        							}
 		        						}
 		        						else if(key.equals("Appetizers")){
+		        							if(Appetizers.equals("")){
+		        								Appetizers = "";
+		        							}
+		        							else{
 		        							getValueAppetizers(tavolo1.get(pos),false);
 		        							String[] test = Appetizers.split("-");
 		        							ArrayList<String> test1 = new ArrayList<String>(Arrays.asList(test));
-		        							for(String element :test1){
+		        							for(String element :Arrays.asList(Appetizers.split("-"))){
 		        								if(element.equals(tavolo1.get(pos))){
 		        									test1.remove(tavolo1.get(pos));
 		        								}
@@ -661,12 +672,17 @@ public class WaitActivity extends Activity {
 		        							for(String element : test1){
 		        									Appetizers = Appetizers + element + "-";
 		        							}
+		        							}
 		        						}
 		        						else if(key.equals("Firsts")){
+		        							if(Firsts.equals("")){
+		        								Firsts = "";
+		        							}
+		        							else{
 		        							getValueFirsts(tavolo1.get(pos),false);
 		        							String[] test = Firsts.split("-");
 		        							ArrayList<String> test1 = new ArrayList<String>(Arrays.asList(test));
-		        							for(String element :test1){
+		        							for(String element :Arrays.asList(Firsts.split("-"))){
 		        								if(element.equals(tavolo1.get(pos))){
 		        									test1.remove(tavolo1.get(pos));
 		        								}
@@ -675,12 +691,17 @@ public class WaitActivity extends Activity {
 		        							for(String element :test1){
 		        									Firsts = Firsts + element + "-";
 		        							}
+		        							}
 		        						}
 		        						else if(key.equals("Seconds")){
+		        							if(Seconds.equals("")){
+		        								Seconds = "";
+		        							}
+		        							else{
 		        							getValueSeconds(tavolo1.get(pos),false);
 		        							String[] test = Seconds.split("-");
 		        							ArrayList<String> test1 = new ArrayList<String>(Arrays.asList(test));
-		        							for(String element :test1){
+		        							for(String element : Arrays.asList(Seconds.split("-"))){
 		        								if(element.equals(tavolo1.get(pos))){
 		        									test1.remove(tavolo1.get(pos));
 		        								}
@@ -688,13 +709,18 @@ public class WaitActivity extends Activity {
 		        							Seconds = "";
 		        							for(String element :test1){
 		        									Seconds = Seconds + element + "-";	
+		        								}
 		        							}
 		        						}
 		        						else if(key.equals("Drinks")){
+		        							if(Drinks.equals("")){
+		        								Drinks = "";
+		        							}
+		        							else{
 		        							getValueDrinks(tavolo1.get(pos),false);
 		        							String[] test = Drinks.split("-");
 		        							ArrayList<String> test1 = new ArrayList<String>(Arrays.asList(test));
-		        							for(String element :test1){
+		        							for(String element : Arrays.asList(Drinks.split("-"))){
 		        								if(element.equals(tavolo1.get(pos))){
 		        									test1.remove(tavolo1.get(pos));
 		        								}
@@ -703,6 +729,7 @@ public class WaitActivity extends Activity {
 		        							Drinks = "";
 		        							for(String element :test1){
 		        									Drinks = Drinks + element + "-";
+		        								}
 		        							}
 		        						}
 		        						
@@ -721,42 +748,82 @@ public class WaitActivity extends Activity {
 	}
 
 	public void setDessert(String test){
+		Desserts = "";
+		if (test.length() == 1){
+			Desserts = "";
+			
+		}
+		else{
 		String[] def = test.split("-");
 		for(int i=0;i<def.length-1;i++){
 			Desserts = Desserts + def[i] + "-" ;
 			
 		}
+		}
 
 		
 	}
 	public void setAppetizers(String test){
+		Appetizers = "";
+		if (test.length() == 1){
+			Appetizers = "";
+			
+		}
+		else{
 		String[] def = test.split("-");
 		for(int i=0;i<def.length-1;i++){
 			Appetizers = Appetizers + def[i] + "-" ;
 				
-			}
+			}}
 	}
 	public void setFirsts(String test){
+		Firsts = "";
+		if (test.length() == 1){
+			Firsts = "";
+			
+		}
+		else{
 		String[] def = test.split("-");
 		for(int i=0;i<def.length-1;i++){
 			Firsts = Firsts + def[i] + "-" ;
 				
 			}
+		}
 	}
 	public void setSeconds(String test){
+		Seconds = "";
+		
+		if (test.length() == 1){
+			Seconds = "";
+			
+		}
+		else{
 		String[] def = test.split("-");
 		for(int i=0;i<def.length-1;i++){
 			Seconds = Seconds + def[i] + "-" ;
 				
 			}
 	}
+	}
 	public void setDrinks(String test){
+		Drinks = "";
+		if (test.length() == 1){
+			Drinks = "";
+			
+		}
+		else{
 		String[] def = test.split("-");
 		for(int i=0;i<def.length-1;i++){
 			Drinks = Drinks + def[i] + "-" ;
 				
 			}
+		}
 	}
+	public void setTotal(String total){
+		this.Total = Integer.parseInt(total);
+		
+	}
+	
 	
 
 

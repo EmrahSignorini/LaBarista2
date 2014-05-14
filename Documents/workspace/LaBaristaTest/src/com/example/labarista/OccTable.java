@@ -23,8 +23,16 @@ public class OccTable extends Activity {
 		String wela = mona.getString("Table");
 		table = wela;
 		Parse.initialize(this, "21Kt4Bfjgl2Xxfa3nqm4LY74Etj1BVqI73mQCflt", "eEyWeokMchKUtVrEn6htK7V08ujFH67yGRCH1WBh");
-		getList();
-		
+		if(getIntent().getStringArrayListExtra("Order")!= null){
+			array = new ArrayList<String>(getIntent().getStringArrayListExtra("Order"));
+			ListView listView1 = (ListView) findViewById(R.id.listView1);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, array.toArray(new String[array.size()]));
+			listView1.setAdapter(adapter);
+			getList();
+		}
+		else{
+			getList();
+		}
         
 		}
 	public void checkout(View view){
