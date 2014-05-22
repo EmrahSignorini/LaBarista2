@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/back"  >
+    android:background="@drawable/back3"
+    android:orientation="vertical" >
 
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
+        android:layout_above="@+id/button2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/back1">
+        android:layout_below="@+id/textView3"
+        android:clipToPadding="false"
+        android:paddingBottom="50dp" >
 
     </ListView>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:onClick="back1"
-        android:text="Back"
-        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/button1"
@@ -34,8 +26,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:onClick="checkout"
-        android:text="Checkout"
-        android:textColor="#ffffff" />
+        android:gravity="center" 
+        android:text="Checkout" 
+        android:background="@null"
+        />
 
     <Button
         android:id="@+id/button3"
@@ -44,8 +38,41 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="36dp"
         android:layout_toRightOf="@+id/button2"
-        android:text="Add Order"
         android:onClick="changeOrder"
-        android:textColor="#ffffff" />
+        android:gravity="center" 
+        android:background="@null"
+        android:text="Add Order"
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Table"
+        android:gravity="center" 
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Total"
+        android:gravity="center" 
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:onClick="back1"
+        android:background="@null"
+        android:text="Back"
+        android:gravity="center" 
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

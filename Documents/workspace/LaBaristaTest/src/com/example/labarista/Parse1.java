@@ -1,7 +1,6 @@
 package com.example.labarista;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import android.view.View;
@@ -16,15 +15,14 @@ public class Parse1 {
 	private String a;
 	private boolean b;
 	private String d;
-	private HashMap<String,Integer> test;
 	public ArrayList<View> hello;
 	private String list = "";
-	
+	private String tot = null;
 	public Parse1(){
 		a = "";
 		b = false;
 		d = "";
-		test = new HashMap<String,Integer>();
+	
 		
 		
 	}
@@ -130,27 +128,7 @@ public class Parse1 {
 	
 	
 	
-	public String getStringArray(final String cl, final String columnFind, final String valueFind, final String columnToGet, final Table table){
-		ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
-		query.whereEqualTo(columnFind, valueFind);
-		query.findInBackground(new FindCallback<ParseObject>() {
-			   public void done(List<ParseObject> objects, ParseException e) {
-			     if (e == null) {
-			    	 for(int i =0;i<objects.size();i++){
-			    		  d = objects.get(i).getString(columnToGet);
-			    	 }  
-				    		  String[] puta = d.split("-");
-				    		  String fodes = "";
-				    		  for (int index = 0; index < puta.length; index++){
-				    			  fodes += puta[index]+" ";
-				    		  }
-			    			  table.addString(fodes); 
-			     } else {}
-			   }
-			 });
 
-		 return d;
-	}
 public void SetBool(final String cl,final String columnFind, final String valueFind,final String columnToGet,final boolean value,final MainActivity main){
 	ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
 	query.whereEqualTo(columnFind, valueFind);
@@ -210,9 +188,7 @@ public void toInt(final String cl, final String column, final String value, fina
 		     if (e == null) {
 		    	 for(int i =0;i<objects.size();i++){
 		    		 if(objects.get(i).getString(column).equals(value)){
-		    			 //asd.setPrice(Integer.parseInt(objects.get(i).getString(toGet)));
-		    			 	test.put(value, Integer.parseInt(objects.get(i).getString(toGet)));
-		    			 	wait.setTotal(Integer.parseInt(objects.get(i).getString(toGet)),Check);
+		    			 wait.setTotal(Integer.parseInt(objects.get(i).getString(toGet)),Check);
 		    		 
 		    		 }
 		    	  }
@@ -222,14 +198,7 @@ public void toInt(final String cl, final String column, final String value, fina
 		 });
 
 }
-	public void SetView(ArrayList<View> prova){
-		this.hello=prova;
-		
-	}
-	public ArrayList<View> Test(){
-		return hello;
-		
-	}
+
     public void getOrder(final String cl, final String columnFind, final String valueFind, final String columnToGet, final OccTable occtable){
         ParseQuery<ParseObject> query = ParseQuery.getQuery(cl);
         query.whereEqualTo(columnFind, valueFind);
@@ -349,7 +318,23 @@ public void toInt(final String cl, final String column, final String value, fina
                     for(int i =0;i<objects.size();i++){
                         list = objects.get(i).getString(columnToGet);
                     }
-                    wait.setTotal(list);
+                    wait.getTotal(list);
+                } else {}
+            }
+        });
+    }
+    
+    
+    public void getTotal(final String table, final OccTable occ){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Orders");
+        query.whereEqualTo("Table", table);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for(int i =0;i<objects.size();i++){
+                    		tot = objects.get(i).getString("Total");
+                    }
+                    occ.setTotal(tot);
                 } else {}
             }
         });

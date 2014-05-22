@@ -1,20 +1,24 @@
 package com.example.labarista;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.parse.Parse;
 
 public class OccTable extends Activity {
 	private String table;
 	private ArrayList<String> array = new ArrayList<String>();
+	private int total;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,16 +32,42 @@ public class OccTable extends Activity {
 			ListView listView1 = (ListView) findViewById(R.id.listView1);
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, array.toArray(new String[array.size()]));
 			listView1.setAdapter(adapter);
-			getList();
+			//getList();
+			setTotal(getIntent().getStringExtra("Total"));
 		}
 		else{
 			getList();
+			setTextView();
+			
 		}
+		
+		
+		
         
 		}
 	public void checkout(View view){
-		Toast toast = Toast.makeText(this, "Done", Toast.LENGTH_SHORT);
-		toast.show();
+		final MediaPlayer mp = new MediaPlayer();
+
+		if(mp.isPlaying()){
+			mp.stop();
+			mp.reset();
+		} 
+		try{
+
+			AssetFileDescriptor afd;
+			afd = getAssets().openFd("cash_register2.mp3");
+			mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+			mp.prepare();
+			mp.start();
+		} 
+		catch (IllegalStateException e) {
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	
+		
 		Parse1 Checkout = new Parse1();
 		Checkout.findSaveBool("Tables","Table", table, "Taken", false, this);	
 		Checkout.deleteAllOrders("Orders", "Table", table, this);
@@ -81,6 +111,19 @@ public class OccTable extends Activity {
 		next.putStringArrayListExtra("Order", array);
 		startActivity(next);
 		
+	}
+	
+	public void setTotal(String total){
+		this.total = Integer.parseInt(total);
+		TextView textView1 = (TextView) findViewById(R.id.textView1);
+		textView1.setText("Total: " + total +" fr.");
+		TextView textView2 = (TextView) findViewById(R.id.textView3);
+		textView2.setText(table);
+	}
+	public void setTextView(){
+		Parse1 par = new Parse1();
+		par.getTotal(table, this);
+
 	}
 	
 }

@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 
 import com.parse.Parse;
 
@@ -57,6 +58,8 @@ public class WaitActivity extends Activity {
 			card = (ListView)findViewById(R.id.listView1);
 			card.setAdapter(asd(tavolo1.toArray(new String[tavolo1.size()])));
 		}
+		TextView textView1 = (TextView)  findViewById(R.id.textView1);
+		textView1.setText(getIntent().getExtras().getString("Table"));
 	}
 
 	@Override
@@ -68,11 +71,6 @@ public class WaitActivity extends Activity {
 
 
 	public void ordine(View view) {
-		test.put("Drinks",0);
-		test.put("Appetizers",0);
-		test.put("Firsts",0);
-		test.put("Seconds",0);
-		test.put("Desserts",0);
 		card = (ListView)findViewById(R.id.listView1);
 		popup = new PopupMenu(this, view);
 		popup2 = new PopupMenu(this, view);
@@ -82,11 +80,6 @@ public class WaitActivity extends Activity {
 		}
 	
 	public void ordine1(View view) {
-		test.put("Drinks",0);
-		test.put("Appetizers",0);
-		test.put("Firsts",0);
-		test.put("Seconds",0);
-		test.put("Desserts",0);
 		card = (ListView)findViewById(R.id.listView1);
 		popup = new PopupMenu(this, view);
 		popup2 = new PopupMenu(this, view);
@@ -95,11 +88,7 @@ public class WaitActivity extends Activity {
 		Test(card);
 		}
 	public void ordine2(View view) {
-		test.put("Drinks",0);
-		test.put("Appetizers",0);
-		test.put("Firsts",0);
-		test.put("Seconds",0);
-		test.put("Desserts",0);
+
 		card = (ListView)findViewById(R.id.listView1);
 		popup = new PopupMenu(this, view);
 		popup2 = new PopupMenu(this, view);
@@ -108,11 +97,7 @@ public class WaitActivity extends Activity {
 		Test(card);
 		}
 	public void ordine3(View view) {
-		test.put("Drinks",0);
-		test.put("Appetizers",0);
-		test.put("Firsts",0);
-		test.put("Seconds",0);
-		test.put("Desserts",0);
+
 		card = (ListView)findViewById(R.id.listView1);
 		popup = new PopupMenu(this, view);
 		popup2 = new PopupMenu(this, view);
@@ -121,11 +106,6 @@ public class WaitActivity extends Activity {
 		Test(card);
 		}
 	public void ordine4(View view) {
-		test.put("Drinks",0);
-		test.put("Appetizers",0);
-		test.put("Firsts",0);
-		test.put("Seconds",0);
-		test.put("Desserts",0);
 		card = (ListView)findViewById(R.id.listView1);
 		popup = new PopupMenu(this, view);
 		popup2 = new PopupMenu(this, view);
@@ -612,6 +592,7 @@ public class WaitActivity extends Activity {
 		Intent Main = new Intent(this, OccTable.class);
 		Main.putExtra("Table", getIntent().getExtras().getString("Table"));
 		Main.putStringArrayListExtra("Order", tavolo1);
+		Main.putExtra("Total", ""+Total);
 		startActivity(Main);
 		
 	}
@@ -819,7 +800,7 @@ public class WaitActivity extends Activity {
 			}
 		}
 	}
-	public void setTotal(String total){
+	public void getTotal(String total){
 		this.Total = Integer.parseInt(total);
 		
 	}
